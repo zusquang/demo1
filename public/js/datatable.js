@@ -7,7 +7,7 @@ var KTDatatableAutoColumnHideDemo = {
                 type: "remote",
                 source: {
                     read: {
-                        url: "https://keenthemes.com/keen/tools/preview/inc/api/datatables/demos/default2.php"
+                        url: "http://localhost:81/api/packages"
                     }
                 },
                 pageSize: 10,
