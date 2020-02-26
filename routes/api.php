@@ -13,6 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/packages', 'Api\\PackageController@index');
+Route::get('/package/{package_id}', 'Api\\PackageController@detail');
+Route::patch('/package/{packageDetail}', 'Api\\PackageController@update');
