@@ -25,9 +25,14 @@ class PackageIdHelper
                 $first += 1;
             }
 
-            return "{$first}-{$second}-{$third}";
+            return self::format($first, $second, $third);
         }
 
-        return "01-001-0001";
+        return self::format(1, 1, 1);
+    }
+
+    private static function format($first, $second, $third)
+    {
+        return sprintf("%'.02d-%'.03d-%'.04d", $first, $second, $third);
     }
 }

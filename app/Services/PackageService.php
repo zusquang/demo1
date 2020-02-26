@@ -35,4 +35,18 @@ class PackageService implements PackageServiceInterface
     {
         return $this->package->where('package_id', $packageId)->first()->details;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function update(PackageDetail $packageDetail, $data)
+    {
+//        dd($packageDetail, $data);
+        foreach ($data as $column => $value) {
+            $packageDetail->{$column} = $value;
+            $packageDetail->save();
+        }
+
+        return true;
+    }
 }

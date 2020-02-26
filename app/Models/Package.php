@@ -21,14 +21,22 @@ class Package extends BaseModel
 
     public function getLastPackageId()
     {
-        return $this->orderBy('id', 'desc')->first();
+        $lastPackage = $this->orderBy('id', 'desc')->first();
+
+        if (!empty($lastPackage)) {
+            return $lastPackage->package_id;
+        }
+
+        return null;
     }
 
     public function beforeSave()
     {
-        $lastPackageId = $this->getLastPackageId();
-        $newPackageId = PackageIdHelper::generatePackageId($lastPackageId);
-        $this->package_id = $newPackageId;
+        if (empty($this->package_id)) {
+            $lastPackageId = $this->getLastPackageId();
+            $newPackageId = PackageIdHelper::generatePackageId($lastPackageId);
+            $this->package_id = $newPackageId;
+        }
     }
 
 }

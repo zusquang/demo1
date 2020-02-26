@@ -14,5 +14,5 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/packages', 'Api\\PackageController@index');
-Route::patch('/packages', 'Api\\PackageController@index');
 Route::get('/package/{package_id}', 'Api\\PackageController@detail');
+Route::patch('/package/{packageDetail}', 'Api\\PackageController@update');
