@@ -14,7 +14,7 @@ class PackageSeeder extends Seeder
     public function run()
     {
         factory(Package::class, 10)->create()->each(function ($package) {
-            $package->details()->save(factory(PackageDetail::class)->make());
+            $package->details()->saveMany(factory(PackageDetail::class, random_int(2, 5))->make());
         });
     }
 }
